@@ -80,18 +80,18 @@ export const recommendProfiles = `query RecommendedProfiles {
           recipient
         }
         ... on ProfileFollowModuleSettings {
-         type
+        type
         }
         ... on RevertFollowModuleSettings {
-         type
+        type
         }
       }
   }
 }`;
 
-export const getProfileId = (id) => {
-  return `query Profile {
-  profile(request: { profileId: ${id} }) {
+export const getProfileId = `
+  query Profile($id: ProfileId ){
+    profile(request: {profileId: $id}) {
     id
     name
     bio
@@ -172,4 +172,3 @@ export const getProfileId = (id) => {
     }
   }
 }`;
-};
