@@ -3,7 +3,11 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["ipfs.infura.io"],
+    domains: [
+      "ipfs.infura.io",
+      "lens.infura-ipfs.io",
+      "statics-polygon-lens-staging.s3.eu-west-1.amazonaws.com",
+    ],
   },
 };
 
