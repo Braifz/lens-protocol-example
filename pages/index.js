@@ -25,14 +25,7 @@ export default function Home() {
       {profiles.map((profile) => (
         <Link href={`/profile/${profile.id}`} key={profile.id}>
           <a>
-            <div
-              style={{
-                border: "1px solid white",
-                margin: "8px",
-                padding: "16px",
-                borderRadius: "8px",
-              }}
-            >
+            <div>
               <h4>{profile.handle}</h4>
               <p>{profile.name}</p>
               <p>{profile.bio}</p>
