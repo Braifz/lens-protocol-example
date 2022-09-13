@@ -1,9 +1,12 @@
 import "../styles/globals.css";
+import Layout from "../components/Layout";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div style={{ padding: "100px" }}>
-      <Component {...pageProps} />
+    <div>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </div>
   );
 }
