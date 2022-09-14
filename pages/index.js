@@ -1,56 +1,12 @@
-import { useState, useEffect } from "react";
-import { client, recommendProfiles } from "../api";
-import Link from "next/link";
-import Image from "next/image";
+import RecommendedProfiles from "../components/RecommendProfiles";
 
-export default function Home() {
-  const [profiles, setProfiles] = useState([]);
-
-  useEffect(() => {
-    fetchProfiles();
-  }, []);
-
-  async function fetchProfiles() {
-    try {
-      const response = await client.query(recommendProfiles).toPromise();
-      setProfiles(response.data.recommendedProfiles);
-    } catch (e) {
-      console.log({ e });
-    }
-  }
-  console.log(profiles);
-  // console.log(profiles[0].picture.original.url);
+const Home = () => {
   return (
     <div>
-      {profiles.map((profile) => (
-        <Link href={`/profile/${profile.id}`} key={profile.id}>
-          <a>
-            <div>
-              <h4>{profile.handle}</h4>
-              <p>{profile.name}</p>
-              <p>{profile.bio}</p>
-              <h3>{profile.ownedBy}</h3>
-              {/* {profile.picture ? (
-                <Image
-                  src={profile.picture.original.url}
-                  width="60px"
-                  height="60px"
-                  alt="img-profile"
-                />
-              ) : (
-                <div
-                  style={{
-                    width: "60px",
-                    height: "60px",
-                    backgroundColor: "white",
-                    borderRadius: "16px",
-                  }}
-                ></div>
-              )} */}
-            </div>
-          </a>
-        </Link>
-      ))}
+      <h2 className="text-3xl text-center p-4">RecommendedProfiles</h2>
+      <RecommendedProfiles />
     </div>
   );
-}
+};
+
+export default Home;
