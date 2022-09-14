@@ -1,8 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import Icon from "../public/assets/navbar-btn.png";
-import NavItem from "./NavItem";
 import styles from "../styles/Navbar.module.css";
 
 const Navbar = () => {
