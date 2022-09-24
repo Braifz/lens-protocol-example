@@ -19,7 +19,7 @@ const RecommendedProfiles = () => {
   }
   console.log(profiles);
   return (
-    <div>
+    <div className="">
       {profiles.map((profile) => (
         <CardProfile profile={profile} key={profile.id} />
       ))}
