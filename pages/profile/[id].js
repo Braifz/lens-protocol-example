@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { client, getProfileId, getPublications } from "../../api";
 import Image from "next/image";
 import { ethers } from "ethers";
+import { motion } from "framer-motion";
 
 import abi from "../../abi.json";
 
@@ -65,16 +66,27 @@ const Profile = () => {
   if (!profile) return null;
 
   return (
-    <div>
-      <button onClick={connect}>Connect</button>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      className="border-green-300 rounded-lg border-2 m-5 p-5 max-w-screen-sm"
+    >
+      <button
+        onClick={connect}
+        className="rounded-lg bg-green-300 p-2 text-black"
+      >
+        Connect
+      </button>
       <h1>{profile.handle}</h1>
       <h3>{profile.bio}</h3>
       {profile.picture ? (
         <Image
           src={profile.picture.original.url}
           width="150px"
-          height="100px"
+          height="150px"
           alt="img-profile"
+          className="rounded-full"
         />
       ) : (
         <div></div>
@@ -82,11 +94,19 @@ const Profile = () => {
 
       {/* <p>Followers: {profile.stats.totalFollowers}</p>
       <p>Following: {profile.stats.totalFollowing}</p> */}
-      <button onClick={followUser}>Follow</button>
+      <button
+        onClick={followUser}
+        className="rounded-lg bg-green-300 p-2 text-black"
+      >
+        Follow
+      </button>
       <h2>Publications</h2>
       {pubs.length > 0 &&
         pubs.map((pub, index) => (
-          <div key={index}>
+          <div
+            key={index}
+            className="border-green-300 rounded-lg border-2 m-5 p-5 max-w-screen-sm"
+          >
             <h3>Content</h3>
             <p>{pub.metadata.content}</p>
             <h2>description</h2>
@@ -94,7 +114,7 @@ const Profile = () => {
             <p>hello</p>
           </div>
         ))}
-    </div>
+    </motion.div>
   );
 };
 
