@@ -1,12 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const CardProfile = ({ profile }) => {
   console.log(profile);
   return (
     <Link href={`/profile/${profile.id}`} key={profile.id}>
       <a>
-        <div className="border-green-300 rounded-lg border-2 m-5 p-5 max-w-screen-sm">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="border-green-300 rounded-lg border-2 m-5 p-5 max-w-screen-sm"
+        >
           <h3 className="text-2xl font-semibold ">{profile.name}</h3>
           <h2>{profile.handle}</h2>
           <p>{profile.bio}</p>
@@ -28,7 +34,7 @@ const CardProfile = ({ profile }) => {
               }}
             ></div>
           )} */}
-        </div>
+        </motion.div>
       </a>
     </Link>
   );
